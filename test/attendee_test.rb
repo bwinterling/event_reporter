@@ -46,4 +46,22 @@ class AttendeeTest < MiniTest::Test
     assert_equal "2024449999", attendee.phone_number
   end
 
+  def test_it_can_change_zipcodes
+    data = {:zipcode => "80210"}
+    attendee = Attendee.new(data)
+    assert_equal data[:zipcode], attendee.zipcode
+    attendee.zipcode = "94333"
+    assert_equal "94333", attendee.zipcode
+  end
+
+  def test_it_adds_zeros_to_short_zipcodes
+    attendee = Attendee.new(:zipcode => "6678")
+    assert_equal "06678", attendee.zipcode
+  end
+
+  def test_it_shortens_long_zipcodes
+    attendee = Attendee.new(:zipcode => "802461122")
+    assert_equal "80246", attendee.zipcode
+  end
+
 end
