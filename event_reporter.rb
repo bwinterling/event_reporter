@@ -27,27 +27,31 @@ class EventReporter
     case command
       when "help"  then puts help
       when "q"     then puts "Goodbye!"
+      when "queue" then which_queue(parts[1..-1])
+      when "load"  then load_file(parts[1])
      # queue count
      # queue clear
      # queue print
      # queue print by attribute
      # queue save to filename.csv
      # find attr criteria
-     #
-
-      # when "s"     then puts shorten_url(parts[1])
-      # when "t"     then tweet(parts[1..-1].join(" "))
-      # when "klout" then klout_score
-      # when "turl"  then tweet_with_url(parts[1..-1])
-      # when "dm"    then dm(parts[1], parts[2..-1].join(" "))
-      # when "spam"  then spam_my_followers(parts[1..-1].join(" "))
-      # when "elt"   then everyones_last_tweet
-      
+     # 
     else
       puts "Sorry, I don't know to #{command}"
     end
 
   #end of process command
+  end
+
+  def load_file(filename)
+    puts "Loading file: #{filename}"
+    manager = EventManager.new
+    @file_data = manager.load_csv(filename)
+
+  end
+
+  def which_queue(parts)
+    puts "Queue command #{parts}"
   end
 
   def help

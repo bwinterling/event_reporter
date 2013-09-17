@@ -6,9 +6,27 @@ class EventManager
 
   def initialize(input = nil)
     puts "Initializing event_manager.rb"
-    contents = CSV.open "event_attendees.csv", headers: true, header_converters: :symbol
-    
+    @filename = "event_attendees.csv"
   end
+
+  def load_csv(filename)
+    
+    if filename.nil?
+      puts "No filename given, using default"
+      filename = @filename
+    else
+      filename
+    end
+
+    csv_object = CSV.open "#{filename}", headers: true, header_converters: :symbol
+    attendees = []
+    csv_object.each do |row|
+      attendees.push Attendee.new(row)
+    end
+    attendees
+  end
+
+
 
   # method 
     # contents.each do |row|
