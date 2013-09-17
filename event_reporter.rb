@@ -1,4 +1,5 @@
 require './event_manager'
+# to process csv into usable format
 
 class EventReporter
 
@@ -7,19 +8,22 @@ class EventReporter
   end
 
   def run
+
+    puts "Welcome to the Brian and George Amazing Event Reporter!!"
     input = ""
     while input != "q"
       puts ""
-      printf "enter command: "
-      input   = gets.chomp
-      parts   = input.split(" ")
-      command = parts[0]
-      process_command(command, parts)
-    end
+      printf "enter command:"
+      input = gets.chomp
+      process_command(input)
+    end  
+
   end
 
-  #process_command method
-  def process_command(command, parts)    
+  # #process_command method
+  def process_command(input)
+    parts = input.split(" ")
+    command = parts[0]    
     case command
       when "help"  then puts help
       when "q"     then puts "Goodbye!"
@@ -42,9 +46,11 @@ class EventReporter
     else
       puts "Sorry, I don't know to #{command}"
     end
+
+  #end of process command
   end
 
-    def help
+  def help
     """
     == DESCRIPTION
 
@@ -59,6 +65,7 @@ class EventReporter
     """
   end
 
+# end of class
 end
 
 reporter = EventReporter.new

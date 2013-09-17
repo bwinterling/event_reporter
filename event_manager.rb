@@ -1,5 +1,6 @@
 require 'csv'
 require './attendee'
+# using attendee class to create input from each attendee
 
 class EventManager
 
@@ -10,11 +11,11 @@ class EventManager
   end
 
   # method 
-    contents.each do |row|
-      name = row[:first_name]
-      zipcode = row[:zipcode]
-      puts "#{name} #{zipcode}"
-    end
+    # contents.each do |row|
+    #   name = row[:first_name]
+    #   zipcode = row[:zipcode]
+    #   puts "#{name} #{zipcode}"
+    # end
 
 
 end

@@ -1,4 +1,5 @@
 require './phone_number.rb'
+# gets clean phone number
 
 class Attendee
   attr_accessor :first_name
